@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HomeAccountance</string>
+    <string name="_dateFormat">MM/dd/yyyy</string>
+    <string name="_name">Item Name</string>
+    <string name="_date">Date</string>
+    <string name="_cost">Cost</string>
+    <string name="_send">Send</string>
+    <string name="_server_address">ec2-3-250-94-53.eu-west-1.compute.amazonaws.com</string>
+</resources>
