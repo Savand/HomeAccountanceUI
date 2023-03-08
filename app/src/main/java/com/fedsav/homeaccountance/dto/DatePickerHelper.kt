@@ -30,7 +30,7 @@ class DatePickerHelper {
     }
 
     fun modifyDateFromInput(year: Int, month: Int, day: Int) {
-        dateTime = getCurrentDateTimeFromDate(LocalDate.of(year, month, day))
+        dateTime = getCurrentDateTimeFromDate(LocalDate.of(year, month + 1, day))
     }
 
     private fun getCurrentDateTimeFromDate(inputDate: LocalDate) =
