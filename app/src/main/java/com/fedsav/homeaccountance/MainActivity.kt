@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://${getString(R.string._server_address)}:8080/homeaccountance/")
+                .baseUrl("${getString(R.string._server_protocol)}://${getString(R.string._server_address)}:${getString(R.string._server_port)}/homeaccountance/")
                 // as we are sending data in json format so
                 // we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
@@ -74,9 +74,11 @@ class MainActivity : AppCompatActivity() {
                         response: Response<Map<String, String>?>
                     ) {
                         if(response.isSuccessful){
-                            Toast.makeText(this@MainActivity, "PurchaseItem has been saved with id ${response.message()}", Toast.LENGTH_SHORT).show()
+                            nameEditText.text.clear()
+                            costEditText.text.clear()
+                            Toast.makeText(this@MainActivity, "PurchaseItem has been saved with id ${response.body()?.get("id")}", Toast.LENGTH_LONG).show()
                         } else {
-                            Toast.makeText(this@MainActivity, "Client Error ${response.errorBody()}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@MainActivity, "Client Error ${response.errorBody()}", Toast.LENGTH_LONG).show()
 
                         }
                     }
