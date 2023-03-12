@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HomeAccountance</string>
+    <string name="app_name">Home Accountancy</string>
     <string name="_dateFormat">MM/dd/yyyy</string>
     <string name="_name">Item Name</string>
     <string name="_date">Date</string>
@@ -9,4 +9,13 @@
     <string name="_server_address">ec2-3-250-94-53.eu-west-1.compute.amazonaws.com</string>
     <string name="_server_protocol">http</string>
     <string name="_card_info">Add Purchase Item</string>
+    <string name="purchase_items">Purchase Items:</string>
+    <string name="add_item">Add Item</string>
+    <string name="go_back">Go To List</string>
+    <string name="itemname">itemName</string>
+    <string name="itemdate">itemDate</string>
+    <string name="itemcost">itemCost</string>
+    <string name="edit_purchase">Edit Purchase Item</string>
+    <string name="edit_purchase_btn_txt">Modify</string>
+    <string name="remove">remove</string>
 </resources>

@@ -10,23 +10,37 @@ import java.util.*
 
 
 @RequiresApi(Build.VERSION_CODES.O)
-class DatePickerHelper {
+class DateFormatter(editDateTime: String?) {
 
     private val DATE_PRESENTATION_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy")
 
-    private val myCalendar: Calendar = Calendar.getInstance()
-    private var dateTime: LocalDateTime = LocalDateTime.now()
+    private var dateTime: LocalDateTime
 
-    var year: Int = myCalendar.get(Calendar.YEAR)
-    var month: Int = myCalendar.get(Calendar.MONTH)
-    var day: Int = myCalendar.get(Calendar.DAY_OF_MONTH)
+    var year: Int
+    var month: Int
+    var day: Int
+
+    init {
+
+        dateTime = if (editDateTime == null) {
+            LocalDateTime.now()
+        } else {
+            LocalDateTime.parse(editDateTime, DateTimeFormatter.ISO_DATE_TIME)
+        }
+
+        year = dateTime.year
+        month = dateTime.monthValue - 1
+        day = dateTime.dayOfMonth
+
+    }
 
     fun getPresentationDate(): String {
         return dateTime.format(DATE_PRESENTATION_FORMATTER)
     }
 
-    fun modifyDateFromPresentation(inputDate : String) {
-        dateTime = getCurrentDateTimeFromDate(LocalDate.parse(inputDate, DATE_PRESENTATION_FORMATTER))
+    fun modifyDateFromPresentation(inputDate: String) {
+        dateTime =
+            getCurrentDateTimeFromDate(LocalDate.parse(inputDate, DATE_PRESENTATION_FORMATTER))
     }
 
     fun modifyDateFromInput(year: Int, month: Int, day: Int) {

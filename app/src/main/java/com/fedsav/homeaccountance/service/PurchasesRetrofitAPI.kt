@@ -1,14 +1,18 @@
 package com.fedsav.homeaccountance.service
 
-import com.fedsav.homeaccountance.dto.SendPurchaseItemRequest
+import com.fedsav.homeaccountance.dto.PurchaseItemDto
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface PurchasesRetrofitAPI {
 
     @POST("purchases")
-    // on below line we are creating a method to post our data.
-    fun postData(@Body dataModal: SendPurchaseItemRequest?): Call<Map<String, String>?>?
+    fun postPurchaseItem(@Body purchaseItemDto: PurchaseItemDto?): Call<Map<String, String>?>?
+
+    @GET("purchases")
+    fun getPurchaseItemList(): Call<List<PurchaseItemDto>?>?
+
+    @DELETE("purchases/{id}")
+    fun removePurchaseItem(@Path("id") id: String): Call<Void>
 
 }
