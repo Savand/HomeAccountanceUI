@@ -11,7 +11,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.fedsav.homeaccountance.R
-import com.fedsav.homeaccountance.dto.DateFormatter
 import com.fedsav.homeaccountance.dto.PurchaseItemDto
 import com.fedsav.homeaccountance.service.PurchasesRetrofitAPI
 import retrofit2.Retrofit
@@ -51,15 +50,19 @@ class PurchaseItemAdapter(
 
         val nameTextView = rowView.findViewById(R.id.item_name) as TextView
         val costTextView = rowView.findViewById(R.id.item_cost) as TextView
-//        val dateTextView = rowView.findViewById(R.id.item_date) as TextView
+
 
         val purchaseItem = getItem(position) as PurchaseItemDto
 
         val format: NumberFormat = NumberFormat.getCurrencyInstance()
+        format.currency = Currency.getInstance(Locale("ua", "UA"))
         format.maximumFractionDigits = 2
 
         nameTextView.text = purchaseItem.name
         costTextView.text = format.format(purchaseItem.cost * 1.00 / 100)
+
+        //comment out the date displaying on the homepage
+//        val dateTextView = rowView.findViewById(R.id.item_date) as TextView
 //        dateTextView.text = DateFormatter(purchaseItem.dateTime).getPresentationDate()
 
 
